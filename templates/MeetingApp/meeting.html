@@ -1,0 +1,55 @@
+{% extends 'meetingapp/base.html' %}
+
+{% block body %}
+ <div class="w3-container w3-padding-16" >
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Nome da Reunião</h3>
+ </div>
+ <div class="w3-row-padding ">
+    <div class="w3-col m4 w3-margin-bottom">
+       <div class="w3-container w3-padding-16 w3-light-gray" >
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Participantes</h3>
+        <p>Nome -- Papel</p>
+        <p>Nome -- Papel</p>
+        <p>Nome -- Papel</p>
+        <p>Nome -- Papel</p>
+       </div>
+    </div>
+
+     <div class="w3-col m4 w3-margin-bottom">
+       <div class="w3-container w3-padding-16 w3-light-gray" >
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Lista de Intervenções</h3>
+         <p>Nome -- de XX:XX a XX:XX</p>
+         <p>Nome -- de XX:XX a XX:XX</p>
+         <p>Nome -- de XX:XX a XX:XX</p>
+         <p>Nome -- de XX:XX a XX:XX</p>
+         <p>Nome -- de XX:XX a XX:XX</p>
+       </div>
+    </div>
+     <div class="w3-col m4 w3-margin-bottom">
+        <div class="w3-container w3-padding-16 w3-light-gray" >
+           <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Ficheiros</h3>
+           <p>File 1  <button class="w3-button w3-black w3-section" type="submit">
+               <i class="w3-button"></i> Download</button>
+           </p>
+           <p>File 2  <button class="w3-button w3-black w3-section" type="submit">
+               <i class="fa fa-paper-plane"></i> Download</button>
+           </p>
+           <p>File 3  <button class="w3-button w3-black w3-section" type="submit">
+               <i class="fa fa-paper-plane"></i> Download</button>
+           </p>
+           <p>File 4  <button class="w3-button w3-black w3-section" type="submit">
+               <i class="fa fa-paper-plane"></i> Download</button>
+           </p>
+        </div>
+ </div>
+ </div>
+ <div class="w3-container  w3-right w3-padding-32 " >
+    <button class="w3-button w3-black w3-section" type="submit">
+        <i class="fa fa-paper-plane"></i> Pedir Intervenção
+    </button>
+    <button class="w3-button w3-red w3-section" type="submit">
+        <i class="fa fa-paper-plane"></i> Sair da Reunião
+    </button>
+ </div>
+
+{% endblock %}
