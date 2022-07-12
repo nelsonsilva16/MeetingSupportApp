@@ -6,6 +6,7 @@ class Utilizador(models.Model):
     name = models.CharField(max_length=255)
     email = models.CharField(max_length=100)
     password = models.CharField(max_length=40)
+    password2 = models.CharField(max_length=40)
 
     def str(self):
         return self.project_name

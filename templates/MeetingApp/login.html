@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'meetingapp/base.html' %}
 
-</body>
-</html>
+{% block body %}
+    <br>
+    <br>
+    <h1>Login</h1>
+    <form class ="site-form" action="/MeetingApp/login/" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Login">
+    </form>
+{%  endblock %}
