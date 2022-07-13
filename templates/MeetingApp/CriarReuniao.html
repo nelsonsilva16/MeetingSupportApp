@@ -1,0 +1,21 @@
+{% extends 'MeetingApp/base.html' %}
+
+{% block body %}
+<div>
+     <div class="w3-container w3-padding-16" >
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Nome da Reunião</h3>
+         <form method="POST" enctype="multipart/form-data" class="w3-border-bottom w3-border-light-grey w3-padding-16">
+             <!-- Security token -->
+             {% csrf_token %}
+             <!-- Using the formset -->
+             <h4>Nome da Reunião</h4>
+                 {{ form.name }}
+                 {{ form.assunto }}
+                 {{ form.data }}
+                 {{ form.hora }}
+             <input type="submit" value="Submit">
+         </form>
+    </div>
+
+</div>
+{% endblock %}
