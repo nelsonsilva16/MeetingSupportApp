@@ -3,16 +3,17 @@
 {% block body %}
 
 {% if form.errors %}
+    <br/><br/>
     <p> Ocorreu um erro com o formulário! </p>
 {% endif %}
 	<br/><br/>
 	<h1>Register</h1>
 <br/>
-		<form action="{%  url '/register_user' %}" method=POST>
+		<form method=POST>
 			{% csrf_token %}
 
-            {{ form }}
-
+            {{ form.as_p }}
+            <br/><br/>
             <input type="submit" value="Submit">
         </form>
 <br/><br/>	
