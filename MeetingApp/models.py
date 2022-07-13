@@ -1,22 +1,21 @@
+from django.contrib.auth.models import User
 from django.db import models
-
 
 # Create your models here.
 
-class Utilizador(models.Model):
-    name = models.CharField(max_length=255)
-    email = models.CharField(max_length=100)
-    password = models.CharField(max_length=40)
-    password2 = models.CharField(max_length=40)
-
-    def str(self):
-        return self.name
+# class Utilizador(models.Model):
+#     name = models.CharField(max_length=255)
+#     email = models.CharField(max_length=100)
+#     password = models.CharField(max_length=40)
+#     password2 = models.CharField(max_length=40)
+#
+#     def str(self):
+#         return self.project_name
 
 
 class Reuniao(models.Model):
     name = models.CharField(max_length=255)
-    data = models.DateTimeField()
-    hora = models.TextField()
+    data = models.DateField()
     assunto = models.CharField(max_length=150)
 
     def str(self):
@@ -24,7 +23,7 @@ class Reuniao(models.Model):
 
 
 class Participante(models.Model):
-    name = models.ForeignKey(Utilizador, on_delete=models.CASCADE)
+    name = models.ForeignKey(User, on_delete=models.CASCADE)
     reuniao = models.ForeignKey(Reuniao, on_delete=models.CASCADE)
 
     PRES = 'Presidente'
@@ -33,7 +32,7 @@ class Participante(models.Model):
     PART = 'Participante'
 
     Roles = [
-        (PRES, 'Presidente'),
+        (PRES,'Presidente'),
         (VP, 'Vice-Presidente'),
         (SECRET, 'Secretário'),
         (PART, 'Participante'),
@@ -79,3 +78,10 @@ class Presencas(models.Model):
     reuniao = models.ForeignKey(Reuniao, on_delete=models.CASCADE)
     participante = models.ForeignKey(Participante, on_delete=models.CASCADE)
     presente = models.BooleanField(default=False)
+
+
+
+
+
+
+
