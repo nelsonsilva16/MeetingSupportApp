@@ -1,15 +1,16 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
 
-class Utilizador(models.Model):
-    name = models.CharField(max_length=255)
-    email = models.CharField(max_length=100)
-    password = models.CharField(max_length=40)
-    password2 = models.CharField(max_length=40)
-
-    def str(self):
-        return self.project_name
+# class Utilizador(models.Model):
+#     name = models.CharField(max_length=255)
+#     email = models.CharField(max_length=100)
+#     password = models.CharField(max_length=40)
+#     password2 = models.CharField(max_length=40)
+#
+#     def str(self):
+#         return self.project_name
 
 
 class Reuniao(models.Model):
@@ -22,7 +23,7 @@ class Reuniao(models.Model):
 
 
 class Participante(models.Model):
-    name = models.ForeignKey(Utilizador, on_delete=models.CASCADE)
+    name = models.ForeignKey(User, on_delete=models.CASCADE)
     reuniao = models.ForeignKey(Reuniao, on_delete=models.CASCADE)
 
     PRES = 'Presidente'
