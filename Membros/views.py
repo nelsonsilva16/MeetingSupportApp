@@ -13,7 +13,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('/home')
+            return redirect('/Inicial')
         else:
             messages.success(request, ("Ocorreu um erro a logar, por favor tente outra vez..."))
             return redirect('/membros/login_user')

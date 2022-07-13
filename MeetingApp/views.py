@@ -1,11 +1,9 @@
+from django.shortcuts import render
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
-from . import models
-from . import forms
-
-def home(request):
-    return render(request, 'MeetingApp/home.html', {})
+from . import forms, models
 # Create your views here.
 
 def criar_reuniao(request):
@@ -50,12 +48,5 @@ def criar_documentos(request):
     context['form'] = form
     return render(request, "MeetingApp/CriarReuniao.html", context)
 
-# def createProject(response):
-#     form = ProjectForm
-#     if response.method == 'POST':
-#         form = ProjectForm(response.POST, response.FILES)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('Index')
-#     context = {'form': form}
-#     return render(response, 'DigitalHubApp/create_project.html', context)
+def home(request):
+    return render(request, 'MeetingApp/home.html', {})
