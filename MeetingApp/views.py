@@ -1,8 +1,11 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
 from . import models
 from . import forms
 
-
+def home(request):
+    return render(request, 'MeetingApp/home.html', {})
 # Create your views here.
 
 def criar_reuniao(request):

@@ -1,0 +1,20 @@
+{% extends 'MeetingApp/base.html' %}
+
+{% block body %}
+
+{% if form.errors %}
+    <br/><br/>
+    <p> Ocorreu um erro com o formulário! </p>
+{% endif %}
+	<br/><br/>
+	<h1>Register</h1>
+<br/>
+		<form method=POST>
+			{% csrf_token %}
+
+            {{ form.as_p }}
+            <br/><br/>
+            <input type="submit" value="Submit">
+        </form>
+<br/><br/>	
+{% endblock %}

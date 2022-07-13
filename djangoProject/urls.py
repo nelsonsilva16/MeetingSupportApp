@@ -20,7 +20,9 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('MeetingApp.urls'))
+    path('', include('MeetingApp.urls')),
+    path('membros/', include('django.contrib.auth.urls')),
+    path('membros/', include('Membros.urls')),
 ]
 
 
