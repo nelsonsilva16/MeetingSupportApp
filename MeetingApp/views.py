@@ -34,7 +34,7 @@ def pagina_reuniao(request,id):
     intervencoes = models.Intervencao.objects.filter(reuniao=id)
 
     reuniao = models.Reuniao.objects.filter(id= id)
-    context = {'ficheiros': ficheiros,'participantes': utilizador, 'reuniao': reuniao,'votacoes': votacoes,'intervencoes':intervencoes}
+    context = {'ficheiros': ficheiros,'participantes': utilizador, 'reuniao': reuniao,'votacoes': votacoes}
     return render(request, "MeetingApp/ReuniaoPage.html", context)
 
 

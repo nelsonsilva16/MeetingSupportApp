@@ -5,14 +5,24 @@
      <div class="w3-container w3-padding-16" >
     <h1 class="w3-border-bottom w3-border-light-grey w3-padding-32 w3-center"><b>Reuniões</b></h1>
     </div>
-    <div class="w3-third w3-container">
+    <div class="w3-half w3-container">
          <h1 class="w3-center w3-padding-16">Próximas Reuniões</h1>
-         <div class="w3-container w3-padding-16 w3-light-blue w3-round">
+         <div class="w3-container w3-padding-16 w3-light-blue w3-round" style="min-height:350px; max-height:450px">
 
              {% if reunioes %}
                  {% for item in reunioes %}
-                    <h4 class="w3-center"><a href="/reuniao/{{item.id}}">{{ item.name }}</a>&nbsp-{{item.data|date:'m-b, H:i'}}
-                        <p class="w3-medium">{{item.assunto}}</p></h4>
+                    <div class="w3-container w3-margin-bottom  w3-light-grey w3-round" >
+                        <div class="w3-container w3-half" >
+                            <h4>{{ item.name }}&nbsp-{{item.data|date:'m-b, H:i'}}
+                            </h4>
+                            <p class="w3-medium">{{item.assunto}}</p>
+                        </div>
+                        <div class="w3-half  w3-align-right">
+                            <a href="/reuniao/{{item.id}}" class="w3-align-right w3-margin-top  w3-margin-left w3-button w3-blue w3-round">Entrar</a>
+                        </div>
+                        </div>
+
+
                  {% endfor %}
 
              {% else %}
@@ -22,13 +32,10 @@
          </div>
 
     </div>
-    <div class="w3-third w3-container">
-        <h1 class="w3-center w3-padding-16"></h1>
-    </div>
-    <div class="w3-third w3-container">
-        <h1 class="w3-center" w3-padding-16>Calendário</h1>
-        <div id="calendar"></div>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+
+    <div class="w3-half w3-container">
+        {% load static %}
+        <img src="{% static 'static/image_home.jpg' %}" style="display: block;margin-left: 0;margin-right: 0;width:100%;max-height:600px">
     </div>
 
 </div>
