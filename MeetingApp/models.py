@@ -21,6 +21,9 @@ class Reuniao(models.Model):
     def str(self):
         return self.name
 
+    def is_member(user):
+        return user.reuniao.filter(participante__name=True)
+
 
 class Participante(models.Model):
     name = models.ForeignKey(User, on_delete=models.CASCADE)
