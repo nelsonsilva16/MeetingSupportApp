@@ -30,9 +30,10 @@ def pagina_utilizador(request):
 def pagina_reuniao(request,id):
     utilizador = models.User.objects.filter(participante__reuniao=id).values('username','participante__reuniao','participante__role')
     ficheiros = models.File.objects.filter(reuniao=id)
+    votacoes = models.Votacao.objects.filter(reuniao=id)
 
     reuniao = models.Reuniao.objects.filter(id= id)
-    context = {'ficheiros': ficheiros,'participantes': utilizador, 'reuniao': reuniao}
+    context = {'ficheiros': ficheiros,'participantes': utilizador, 'reuniao': reuniao,'votacoes': votacoes}
     return render(request, "MeetingApp/ReuniaoPage.html", context)
 
 
