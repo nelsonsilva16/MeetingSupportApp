@@ -50,5 +50,18 @@ def criar_documentos(request):
     context['form'] = form
     return render(request, "MeetingApp/CriarReuniao.html", context)
 
+def criar_votacao(request, id):
+    context = {}
+
+    # add the dictionary during initialization
+    form = forms.VotacaoForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('/reuniao/{}'.format(id))
+
+    context['form'] = form
+    return render(request, "MeetingApp/Criar_votacao.html", context)
+
+
 def home(request):
     return render(request, 'MeetingApp/home.html', {})

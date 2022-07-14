@@ -27,4 +27,17 @@ class ReuniaoForm(forms.ModelForm):
             })
         }
 
+class VotacaoForm(forms.ModelForm):
+    class Meta:
+        model = models.Votacao
+
+        fields = ['reuniao',
+                  'assunto']
+        widgets = {
+            'assunto': forms.TextInput(attrs={
+                'label': 'Nome da Votação:',
+                'class': "form-control",
+                'style': "max-width: 300px;font-family: 'Roboto', sans-serif;",
+            }),
+        }
 
