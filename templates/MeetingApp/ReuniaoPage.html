@@ -1,9 +1,15 @@
 {% extends 'MeetingApp/base.html' %}
 
 {% block body %}
-<div>
-     <div class="w3-container w3-padding-16" >
-    <h1 class="w3-border-bottom w3-border-light-grey w3-padding-16 w3-center">{{reuniao.name}}</h1>
+{% if user.is_authenticated %}
+   {% for item in participantes %}
+      {% if item.username == user.username %}
+           <div>
+     <div class="w3-padding-64 w3-light-blue w3-round" >
+         {% for reu in reuniao %}
+         <h1 class="w3-padding-top w3-center w3-jumbo"><b>{{reu.name}}</b></h1>
+         <h2 class="w3-padding-bottom w3-center">{{reu.assunto}}</h2>
+         {% endfor %}
     </div>
     <div class="w3-third w3-container ">
          <h1 class="w3-center w3-padding-16">Participantes</h1>
@@ -11,7 +17,7 @@
             {% if participantes %}
               {% for item in participantes %}
                <div class="w3-container w3-margin-bottom  w3-light-grey w3-round">
-                   <p class="w3-medium">{{ item.username }} - {{ item.participante__role }} </p>
+                   <p class="w3-medium"><b>{{ item.username }}</b> - {{ item.participante__role }} </p>
                </div>
               {% endfor %}
         {% else %}
@@ -53,4 +59,26 @@
     </div>
 
 </div>
+        {% if item.participante__role == 'Presidente' %}
+            <div class="w3-container w3-center w3-padding-top">
+               <h1 class="w3-center w3-padding-16">Administração</h1>
+               <div class="w3-container w3-padding-16 w3-light-blue w3-round">
+                    <a class="w3-align-left w3-button w3-green w3-padding-16 ">Criar Votação</a>
+                    <a class="w3-align-right w3-button w3-red w3-padding-16 ">Marcar precensas</a>
+
+               </div>
+            </div>
+        {% else %}
+            <div class="w3-container w3-padding-32" >
+             <h1 class="w3-border-bottom w3-border-light-grey w3-padding-16 w3-center">Nao és presidente burro</h1>
+             </div>
+        {% endif %}
+      {% endif %}
+   {% endfor %}
+{% else %}
+    <div class="w3-container w3-padding-16" >
+             <h1 class="w3-border-bottom w3-border-light-grey w3-padding-16 w3-center">Não estás logado.</h1>
+             </div>
+{% endif %}
+
 {% endblock %}
