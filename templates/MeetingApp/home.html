@@ -5,15 +5,19 @@
         <h1 class="w3-bold w3-jumbo">Aplicação de Suporte de Reuniões</h1>
         <div class=" w3-container w3-half w3-padding-top">
             <h3 class="w3-xxlarge">Para Facilitar as Reuniões Presenciais!</h3>
-            <div><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book.
-                It has survived not only five centuries, but also the leap into electronic typesetting, remaining
-                essentially unchanged. It was popularised in the 1960s with the rel
-                ease of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-                software like Aldus PageMaker including versions of Lorem Ipsum.
+            <div w3 class="w3-container w3-round w3-light-blue"><p>Esta aplicação faz parte de um projeto proposto pela UTAD para suporte de reuniões!<br>
+                Tem várias Funcionalidades: <br><b>acesso descentralizado a documentos pertinentes,</b> <br>
+                 <b> Gestão de Votações,<br> Gestão de precensas e de intervenções.</b>
+                <br>
+                Esta é a nova pagina inicial,faça o seu registo ou login caso já tenha conta.
+                <h4 class="w3-xxlarge w3-bold">Gira as suas Reuniões Connosco!</h4>
             </p></div>
+
         </div>
+        <div class=" w3-container w3-half w3-padding-top">
+                {% load static %}
+                <img src="{% static 'static/image_home.jpg' %}" height="80%">
+            </div>
 
     </div>
 {% endblock %}

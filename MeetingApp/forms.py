@@ -9,7 +9,6 @@ class ReuniaoForm(forms.ModelForm):
 
         fields = ['name',
                   'data',
-                  'hora',
                   'assunto']
         widgets = {
             'name': forms.TextInput(attrs={
@@ -19,11 +18,6 @@ class ReuniaoForm(forms.ModelForm):
             }),
             'data': forms.DateTimeInput(attrs={
                 'type': 'date',
-                'class': "form-control",
-                'placeholder': 'Insira a data da reunião'
-            }),
-            'hora': forms.TimeInput(attrs={
-                'type': 'time',
                 'class': "form-control",
                 'placeholder': 'Insira a data da reunião'
             }),

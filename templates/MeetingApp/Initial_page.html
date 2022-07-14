@@ -8,11 +8,13 @@
     <div class="w3-third w3-container">
          <h1 class="w3-center w3-padding-16">Próximas Reuniões</h1>
          <div class="w3-container w3-padding-16 w3-grey w3-round">
+
              {% if reunioes %}
                  {% for item in reunioes %}
-                   <h4 class="w3-center"><a href="/reuniao/{{item.id}}">{{ item.name }}</a>&nbsp-{{item.data|date:'m-b, H:i'}}
-                       <p class="w3-medium">{{item.assunto}}</p></h4>
+                    <h4 class="w3-center"><a href="/reuniao/{{item.id}}">{{ item.name }}</a>&nbsp-{{item.data|date:'m-b, H:i'}}
+                        <p class="w3-medium">{{item.assunto}}</p></h4>
                  {% endfor %}
+
              {% else %}
                <h4 class="w3-center">Não tem reuniões marcadas...</h4>
              {% endif %}

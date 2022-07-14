@@ -15,7 +15,7 @@ from django.db import models
 
 class Reuniao(models.Model):
     name = models.CharField(max_length=255)
-    data = models.DateField()
+    data = models.DateTimeField()
     assunto = models.CharField(max_length=150)
 
     def str(self):

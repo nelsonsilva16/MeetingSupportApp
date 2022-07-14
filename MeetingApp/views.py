@@ -21,13 +21,14 @@ def criar_reuniao(request):
 
 
 def pagina_utilizador(request):
-    reunioes = models.Reuniao.objects.all()
+    utilizador = request.user
+    reunioes = models.Reuniao.objects.filter(participante__name=utilizador.id)
     context = {'reunioes': reunioes}
     return render(request, "MeetingApp/Initial_page.html", context)
 
 
 def pagina_reuniao(request,id):
-    utilizador = models.Utilizador.objects.filter(participante__reuniao=id).values('name','participante__role')
+    utilizador = models.User.objects.filter(participante__reuniao=id).values('username','participante__reuniao','participante__role')
     ficheiros = models.File.objects.filter(reuniao=id)
 
     reuniao = models.Reuniao.objects.filter(id=id)

@@ -11,7 +11,7 @@
             {% if participantes %}
               {% for item in participantes %}
                <div class="w3-container w3-margin-bottom  w3-light-grey w3-round">
-                   <p class="w3-medium">{{ item.name }} - {{ item.participante__role }} </p>
+                   <p class="w3-medium">{{ item.user_name }} - {{ item.participante__role }} </p>
                </div>
               {% endfor %}
         {% else %}
@@ -23,7 +23,7 @@
 
     <div class="w3-third w3-container">
         <h1 class="w3-center w3-padding-16">Ficheiros</h1>
-        <div class="w3-container w3-padding-16 w3-grey w3-round">
+        <div class="w3-container w3-padding-16 w3-light-blue w3-round">
              {% if ficheiros %}
               {% for item in ficheiros %}
                 <div class="w3-container w3-margin-bottom  w3-light-grey w3-round">
@@ -39,7 +39,7 @@
 
          </div>
     </div>
-     <div class="w3-third w3-container w3-center w3-padding-top">
+     <div class="w3-third w3-container w3-center">
         <a href="https://google.com" class="w3-button w3-black w3-center">Entrar Reunião</a>
         <h1 class="w3-center w3-padding-16"></h1>
     </div>
