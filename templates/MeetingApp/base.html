@@ -12,7 +12,7 @@
 <div class="w3-top">
   <div class="w3-bar w3-white w3-wide w3-padding w3-card">
 
-       <p class="w3-bar-item"><b>MA</b> Support Meetings</p>
+       <a class="w3-bar-item w3-button"><b>MA</b> Support Meetings</a>
       {% if user.is_authenticated %}
         <a class="w3-bar-item "> Olá {{ user }} !</a>
       {% endif %}
@@ -20,7 +20,7 @@
     <div class="w3-right">
         {% if user.is_authenticated %}
             <a href="/home" class="w3-bar-item w3-button">Home</a>
-            <a href="/about" class="w3-bar-item w3-button">Reuniões</a>
+            <a href="/Inicial" class="w3-bar-item w3-button">Reuniões</a>
             <a href="/membros/logout_user" class="w3-bar-item w3-button">Logout
             </a>
         {% else %}
