@@ -50,12 +50,19 @@
         <h1 class="w3-center w3-padding-16">Votações</h1>
         <div class="w3-container w3-padding-16 w3-light-blue w3-round">
              {% if votacoes %}
-              {% for item in votacoes %}
+              {% for vote in votacoes %}
                 <div class="w3-container w3-margin-bottom  w3-light-grey w3-round">
-                 <h4 class="w3-center">{{item.name}} </h4>
-                    <p>{{item.assunto}}</p>
+                 <h4 class="w3-center">{{vote.name}} </h4>
+                    <p>{{vote.assunto}}</p>
                     <a class="w3-align-left w3-button w3-green w3-margin-bottom">A Favor</a>
                     <a class="w3-align-right w3-button w3-red w3-margin-bottom">Contra</a>
+                    {% for reu in reuniao %}
+                        {% if item.participante__role == 'Presidente' %}
+                            <a class="w3-align-right w3-button w3-red w3-margin-bottom" href="/delete/{{ vote.id }}/{{ reu.id }}">Apagar</a>
+                        {% elif item.participante__role == 'Vice-presidente'%}
+                            <a class="w3-align-right w3-button w3-red w3-margin-bottom" href="/delete/{{ vote.id }}/{{ reu.id }}">Apagar </a>
+                        {% endif %}
+                    {% endfor %}
                 </div>
 
               {% endfor %}
@@ -75,6 +82,7 @@
                <div class="w3-container w3-padding-16 w3-light-blue w3-round">
                     <a class="w3-align-left w3-button w3-green w3-padding-16 " href="/votacao/{{ reu.id }}">Criar Votação</a>
                     <a class="w3-align-right w3-button w3-red w3-padding-16 ">Marcar precensas</a>
+                    <a class="w3-align-right w3-button w3-red w3-padding-16 ></a>
                </div>
             {% endfor %}
             </div>

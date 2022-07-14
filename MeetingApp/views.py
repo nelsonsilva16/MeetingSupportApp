@@ -65,5 +65,11 @@ def criar_votacao(request, id):
     return render(request, "MeetingApp/Criar_votacao.html", context)
 
 
+def apagar_votacao(request, id, idreu):
+    models.Votacao.objects.get(id=id).delete()
+
+    return redirect('/reuniao/{}'.format(idreu))
+
+
 def home(request):
     return render(request, 'MeetingApp/home.html', {})
