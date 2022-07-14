@@ -71,7 +71,6 @@ class Intervencao(models.Model):
 
 class Votacao(models.Model):
     reuniao = models.ForeignKey(Reuniao, on_delete=models.CASCADE)
-    data = models.DateTimeField()
     assunto = models.CharField(max_length=150)
 
 

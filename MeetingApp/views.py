@@ -51,10 +51,12 @@ def criar_documentos(request):
 
 def criar_votacao(request, id):
     context = {}
-
+    reuniao = models.Reuniao.objects.get(id=id).id
     # add the dictionary during initialization
-    form = forms.VotacaoForm(request.POST or None)
+    form = forms.VotacaoForm(request.POST or None, initial={'reuniao': reuniao})
+
     if form.is_valid():
+
         form.save()
         return redirect('/reuniao/{}'.format(id))
 
