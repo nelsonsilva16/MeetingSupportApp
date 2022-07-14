@@ -15,11 +15,14 @@ from django.db import models
 
 class Reuniao(models.Model):
     name = models.CharField(max_length=255)
-    data = models.DateField()
+    data = models.DateTimeField()
     assunto = models.CharField(max_length=150)
 
     def str(self):
         return self.name
+
+    def is_member(user):
+        return user.reuniao.filter(participante__name=True)
 
 
 class Participante(models.Model):

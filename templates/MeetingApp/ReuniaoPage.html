@@ -11,14 +11,13 @@
             {% if participantes %}
               {% for item in participantes %}
                <div class="w3-container w3-margin-bottom  w3-light-grey w3-round">
-                   <p class="w3-medium">{{ item.name }} - {{ item.participante__role }} </p>
+                   <p class="w3-medium">{{ item.username }} - {{ item.participante__role }} </p>
                </div>
               {% endfor %}
         {% else %}
                <h4 class="w3-center">Ainda nao há participantes...</h4>
         {% endif %}
          </div>
-
     </div>
 
     <div class="w3-third w3-container">

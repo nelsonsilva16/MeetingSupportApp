@@ -27,7 +27,7 @@ def pagina_utilizador(request):
 
 
 def pagina_reuniao(request,id):
-    utilizador = models.Utilizador.objects.filter(participante__reuniao=id).values('name','participante__role')
+    utilizador = models.User.objects.filter(participante__reuniao=id).values('username','participante__role')
     ficheiros = models.File.objects.filter(reuniao=id)
 
     reuniao = models.Reuniao.objects.filter(id=id)
