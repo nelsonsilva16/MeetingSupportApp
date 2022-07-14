@@ -10,4 +10,5 @@ urlpatterns = [
     path('Inicial', views.pagina_utilizador, name='Paginal Inicial'),
     path('reuniao/<str:id>',views.pagina_reuniao,name='Pagina Reuniao'),
     path('votacao/<str:id>',views.criar_votacao,name='Pagina Votacao'),
+    path('delete/<str:id>/<str:idreu>',views.apagar_votacao,name='Apagar Votacao'),
     ]

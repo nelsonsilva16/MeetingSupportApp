@@ -4,8 +4,6 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from . import forms, models
-
-
 # Create your views here.
 
 def criar_reuniao(request):
@@ -29,14 +27,14 @@ def pagina_utilizador(request):
     return render(request, "MeetingApp/Initial_page.html", context)
 
 
-def pagina_reuniao(request, id):
-    utilizador = models.User.objects.filter(participante__reuniao=id).values('username', 'participante__reuniao',
-                                                                             'participante__role')
+def pagina_reuniao(request,id):
+    utilizador = models.User.objects.filter(participante__reuniao=id).values('username','participante__reuniao','participante__role')
     ficheiros = models.File.objects.filter(reuniao=id)
     votacoes = models.Votacao.objects.filter(reuniao=id)
+    intervencoes = models.Intervencao.objects.filter(reuniao=id)
 
-    reuniao = models.Reuniao.objects.filter(id=id)
-    context = {'ficheiros': ficheiros, 'participantes': utilizador, 'reuniao': reuniao, 'votacoes': votacoes}
+    reuniao = models.Reuniao.objects.filter(id= id)
+    context = {'ficheiros': ficheiros,'participantes': utilizador, 'reuniao': reuniao,'votacoes': votacoes}
     return render(request, "MeetingApp/ReuniaoPage.html", context)
 
 
@@ -53,18 +51,25 @@ def criar_documentos(request):
     context['form'] = form
     return render(request, "MeetingApp/CriarReuniao.html", context)
 
-
 def criar_votacao(request, id):
     context = {}
-
+    reuniao = models.Reuniao.objects.get(id=id).id
     # add the dictionary during initialization
-    form = forms.VotacaoForm(request.POST or None)
+    form = forms.VotacaoForm(request.POST or None, initial={'reuniao': reuniao})
+
     if form.is_valid():
+
         form.save()
         return redirect('/reuniao/{}'.format(id))
 
     context['form'] = form
     return render(request, "MeetingApp/Criar_votacao.html", context)
+
+
+def apagar_votacao(request, id, idreu):
+    models.Votacao.objects.get(id=id).delete()
+
+    return redirect('/reuniao/{}'.format(idreu))
 
 
 def home(request):
