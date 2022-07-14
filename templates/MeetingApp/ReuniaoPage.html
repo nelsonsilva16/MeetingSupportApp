@@ -53,7 +53,6 @@
                  <h4 class="w3-center">Votação 1 </h4>
                     <a class="w3-align-left w3-button w3-green w3-margin-bottom">A Favor</a>
                     <a class="w3-align-right w3-button w3-red w3-margin-bottom">Contra</a>
-
                 </div>
          </div>
     </div>
@@ -61,12 +60,13 @@
 </div>
         {% if item.participante__role == 'Presidente' %}
             <div class="w3-container w3-center w3-padding-top">
+            {% for reu in reuniao %}
                <h1 class="w3-center w3-padding-16">Administração</h1>
                <div class="w3-container w3-padding-16 w3-light-blue w3-round">
-                    <a class="w3-align-left w3-button w3-green w3-padding-16 ">Criar Votação</a>
+                    <a class="w3-align-left w3-button w3-green w3-padding-16 " href="/votacao/{{ reu.id }}">Criar Votação</a>
                     <a class="w3-align-right w3-button w3-red w3-padding-16 ">Marcar precensas</a>
-
                </div>
+            {% endfor %}
             </div>
         {% else %}
             <div class="w3-container w3-padding-32" >

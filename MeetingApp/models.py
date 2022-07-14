@@ -21,13 +21,12 @@ class Reuniao(models.Model):
     def str(self):
         return self.name
 
-    def is_member(user):
-        return user.reuniao.filter(participante__name=True)
 
 
 class Participante(models.Model):
     name = models.ForeignKey(User, on_delete=models.CASCADE)
     reuniao = models.ForeignKey(Reuniao, on_delete=models.CASCADE)
+    presente = models.BooleanField(default=False)
 
     PRES = 'Presidente'
     VP = 'Vice-presidente'
@@ -48,6 +47,7 @@ class Participante(models.Model):
 
     def str(self):
         return self.name
+
 
 
 class File(models.Model):
@@ -71,10 +71,15 @@ class Intervencao(models.Model):
 
 class Votacao(models.Model):
     reuniao = models.ForeignKey(Reuniao, on_delete=models.CASCADE)
-    participante = models.ForeignKey(Participante, on_delete=models.CASCADE)
-    datai = models.DateTimeField()
-    duracao = models.IntegerField()
+    data = models.DateTimeField()
     assunto = models.CharField(max_length=150)
+
+
+class Voto(models.Model):
+    votacao = models.ForeignKey(Votacao, on_delete=models.CASCADE)
+    participante = models.ForeignKey(Participante, on_delete=models.CASCADE)
+    voto = models.BooleanField()
+
 
 
 class Presencas(models.Model):
