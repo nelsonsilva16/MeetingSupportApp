@@ -4,7 +4,7 @@
 {% if user.is_authenticated %}
    {% for item in participantes %}
       {% if item.username == user.username %}
-           <div>
+<div>
      <div class="w3-padding-64 w3-light-blue w3-round" >
          {% for reu in reuniao %}
          <h1 class="w3-padding-top w3-center w3-jumbo"><b>{{reu.name}}</b></h1>
@@ -45,18 +45,28 @@
 
          </div>
     </div>
-     <div class="w3-third w3-container w3-center w3-padding-top">
+
+    <div class="w3-third w3-container">
         <h1 class="w3-center w3-padding-16">Votações</h1>
         <div class="w3-container w3-padding-16 w3-light-blue w3-round">
-
+             {% if votacoes %}
+              {% for item in votacoes %}
                 <div class="w3-container w3-margin-bottom  w3-light-grey w3-round">
-                 <h4 class="w3-center">Votação 1 </h4>
+                 <h4 class="w3-center">{{item.name}} </h4>
+                    <p>{{item.assunto}}</p>
                     <a class="w3-align-left w3-button w3-green w3-margin-bottom">A Favor</a>
                     <a class="w3-align-right w3-button w3-red w3-margin-bottom">Contra</a>
 
                 </div>
+
+              {% endfor %}
+            {% else %}
+               <h4 class="w3-center">Ainda nao há votações...</h4>
+            {% endif %}
+
          </div>
     </div>
+
 
 </div>
         {% if item.participante__role == 'Presidente' %}
@@ -68,16 +78,22 @@
 
                </div>
             </div>
-        {% else %}
-            <div class="w3-container w3-padding-32" >
-             <h1 class="w3-border-bottom w3-border-light-grey w3-padding-16 w3-center">Nao és presidente burro</h1>
-             </div>
+        {% elif item.participante__role == 'Vice-Presidente' %}
+            <div class="w3-container w3-center w3-padding-top">
+               <h1 class="w3-center w3-padding-16">Administração</h1>
+               <div class="w3-container w3-padding-16 w3-light-blue w3-round">
+                    <a class="w3-align-left w3-button w3-green w3-padding-16 ">Criar Votação</a>
+                    <a class="w3-align-right w3-button w3-red w3-padding-16 ">Marcar precensas</a>
+
+               </div>
+            </div>
         {% endif %}
       {% endif %}
    {% endfor %}
 {% else %}
     <div class="w3-container w3-padding-16" >
-             <h1 class="w3-border-bottom w3-border-light-grey w3-padding-16 w3-center">Não estás logado.</h1>
+             <h1 class="w3-border-bottom w3-border-light-grey w3-padding-64 w3-center"><b>Acesso Negado.</b></h1>
+              <p class="w3-large w3-bold">Ou não está logado ou não está presente nesta reunião!</p>
              </div>
 {% endif %}
 
