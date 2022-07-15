@@ -12,15 +12,15 @@
          {% endfor %}
     </div>
     <div class="w3-third w3-container ">
-         <h1 class="w3-center w3-padding-16">Participantes</h1>
-         <div class="w3-container w3-padding-16  w3-light-blue w3-round" style="min-height:300px; max-height:300px">
+         <h1 class="w3-center w3-padding-16"><b>Participantes</b></h1>
+         <div class="w3-container w3-padding-16  w3-light-blue w3-round" style="min-height:300px; max-height:300px; overflow-y: scroll">
             {% if participantes %}
               {% for item in participantes %}
                <div class="w3-container w3-margin-bottom  w3-light-grey w3-round">
-                   <p class="w3-medium"><b>{{ item.username }}</b> - {{ item.participante__role }} </p>
+                   <p class="w3-medium"><b>{{ item.username }}</b> - {{ item.participante__role }} <input type="checkbox"></p>
                </div>
               {% endfor %}
-                <a class="w3-align-right w3-button w3-blue w3-margin-bottom w3-round" > Pedir Intervenção </a>
+
         {% else %}
                <h4 class="w3-center">Ainda nao há participantes...</h4>
         {% endif %}
@@ -29,8 +29,8 @@
     </div>
 
     <div class="w3-third w3-container" >
-        <h1 class="w3-center w3-padding-16">Ficheiros</h1>
-        <div class="w3-container w3-padding-16 w3-light-blue w3-round" style="min-height:300px; max-height:300px">
+        <h1 class="w3-center w3-padding-16"><b>Ficheiros</b></h1>
+        <div class="w3-container w3-padding-16 w3-light-blue w3-round" style="min-height:300px; max-height:300px ; overflow-y: scroll">
              {% if ficheiros %}
               {% for item in ficheiros %}
                 <div class="w3-container w3-margin-bottom  w3-light-grey w3-round">
@@ -41,15 +41,15 @@
 
               {% endfor %}
             {% else %}
-               <h4 class="w3-center">Ainda nao há ficheiros...</h4>
+               <h3 class="w3-center w3-margin-top">Ainda nao há ficheiros...</h3>
             {% endif %}
 
          </div>
     </div>
 
     <div class="w3-third w3-container">
-        <h1 class="w3-center w3-padding-16">Votações</h1>
-        <div class="w3-container w3-padding-16 w3-light-blue w3-round" style="min-height:300px; max-height:300px">
+        <h1 class="w3-center w3-padding-16"><b>Votações</b></h1>
+        <div class="w3-container w3-padding-16 w3-light-blue w3-round" style="min-height:300px; max-height:300px ; overflow-y: scroll">
              {% if votacoes %}
               {% for vote in votacoes %}
                 <div class="w3-container w3-margin-bottom  w3-light-grey w3-round">
@@ -74,15 +74,12 @@
          </div>
     </div>
 
-
-</div>
         {% if item.participante__role == 'Presidente' %}
+            <div class="w3-padding-64" style="margin-top: 350px"></div>
             <div class="w3-container w3-center w3-padding-top">
             {% for reu in reuniao %}
-               <h1 class="w3-center w3-padding-16">Administração</h1>
                <div class="w3-container w3-padding-16 w3-light-blue w3-round">
                     <a class="w3-center w3-button w3-blue w3-padding-16 w3-round" href="/votacao/{{ reu.id }}">Criar Votação</a>
-                    <a class="w3-center w3-button w3-blue w3-padding-16 w3-round">Marcar precensas</a>
                     <div class="w3-align-left w3-container">
                     {% if intervencoes %}
                         {% for item in intervencoes %}
@@ -101,12 +98,13 @@
             {% endfor %}
             </div>
         {% elif item.participante__role == 'Vice-presidente' %}
+            <div class="w3-padding-64" style="margin-top: 350px"></div>
+            <div class="w3-container w3-center w3-padding-top">
             {% for reu in reuniao %}
-            <div class="w3-container w3-third w3-padding-top" >
-               <h1 class="w3-center w3-padding-16">Administração</h1>
+
+            <div class="w3-container w3-center  w3-padding-top" >
                <div class="w3-container w3-padding-16 w3-light-blue w3-round">
-                    <a class="w3-center w3-button w3-blue w3-padding-16 w3-round" href="/votacao/{{ reu.id }}">Criar Votação</a>
-                    <a class="w3-center w3-button w3-blue w3-padding-16 w3-round">Marcar precensas</a>
+                    <a class="w3-center w3-button w3-blue w3-padding-16 w3-margin-top w3-round" href="/votacao/{{ reu.id }}">Criar Votação</a>
                     <div class="w3-align-left w3-container">
                     {% if intervencoes %}
                         {% for item in intervencoes %}
@@ -117,13 +115,61 @@
                                     </div>
 
                         {% endfor %}
-                        <a class="w3-align-right w3-button w3-blue w3-margin-bottom w3-round" > Pedir Intervenção </a>
+                    {% else %}
+               <h4 class="w3-align-left">Ainda nao há intervenções...</h4>
+
+        {% endif %}
+
+                </div>
+            {% endfor %}
+               </div>
+            </div>
+            {% elif item.participante__role == 'Secretário' %}
+            <div class="w3-padding-64" style="margin-top: 350px"></div>
+            <div class="w3-container w3-center w3-padding-top">
+            {% for reu in reuniao %}
+               <div class="w3-container w3-padding-16 w3-light-blue w3-round">
+                    <a class="w3-align-right w3-button w3-blue w3-margin-bottom w3-round" > Pedir Intervenção </a>
+                    <a class="w3-align-right w3-button w3-blue w3-margin-bottom w3-round">Marcar precensas</a>
+                    <div class="w3-align-left w3-container">
+                    {% if intervencoes %}
+                        {% for item in intervencoes %}
+                                    <div class="w3-container w3-margin-bottom  w3-light-grey w3-round">
+                                            {% if part.id == item.participante__id %}
+                                                <p class="w3-medium"><b>{{ part.username }} </b> pediu para intervir às - {{ item.datai }} </p>
+                                            {% endif %}
+                                    </div>
+
+                        {% endfor %}
                     {% else %}
                <h4 class="w3-align-left">Ainda nao há intervenções...</h4>
         {% endif %}
                 </div>
-            {% endfor %}
                </div>
+            {% endfor %}
+            </div>
+            {% elif item.participante__role == 'Participante' %}
+            <div class="w3-padding-64" style="margin-top: 350px"></div>
+            <div class="w3-container w3-center w3-padding-top">
+            {% for reu in reuniao %}
+               <div class="w3-container w3-padding-16 w3-light-blue w3-round">
+                    <a class="w3-align-right w3-button w3-blue w3-margin-bottom w3-round" > Pedir Intervenção </a>
+                    <div class="w3-align-left w3-container">
+                    {% if intervencoes %}
+                        {% for item in intervencoes %}
+                                    <div class="w3-container w3-margin-bottom  w3-light-grey w3-round">
+                                            {% if part.id == item.participante__id %}
+                                                <p class="w3-medium"><b>{{ part.username }} </b> pediu para intervir às - {{ item.datai }} </p>
+                                            {% endif %}
+                                    </div>
+
+                        {% endfor %}
+                    {% else %}
+               <h4 class="w3-align-left">Ainda nao há intervenções...</h4>
+        {% endif %}
+                </div>
+               </div>
+            {% endfor %}
             </div>
         {% endif %}
       {% endif %}
