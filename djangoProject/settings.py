@@ -85,11 +85,11 @@ DATABASES = {
 
         'USER': 'postgres',
 
-        'PASSWORD': 'Ag12bdhgi20',
+        'PASSWORD': 'CSP2021db',
 
         'HOST': 'localhost',
 
-        'PORT': '5432'
+        'PORT': '5433'
 
     }
 }
