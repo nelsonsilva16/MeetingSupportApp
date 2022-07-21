@@ -11,4 +11,6 @@ urlpatterns = [
     path('reuniao/<str:id>',views.pagina_reuniao,name='Pagina Reuniao'),
     path('votacao/<str:id>',views.criar_votacao,name='Pagina Votacao'),
     path('delete/<str:id>/<str:idreu>',views.apagar_votacao,name='Apagar Votacao'),
+    path('votoF/<str:id>/<str:idreu>',views.voto_favor),
+    path('votoC/<str:id>/<str:idreu>',views.voto_contra),
     ]

@@ -41,19 +41,6 @@
 </header>
 
 <!-- Page content -->
- <div class="w3-container">
-      {% if messages %}
-        {% for message in messages %}
-
-          <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <br>
-              <br>
-              <br>
-              {{ message }}
-              <button type="button" class="w3-button"  aria-label="Close"></button>
-          </div>
-        {% endfor %}
-      {% endif %}
 
 {% block body %}
 {% endblock %}

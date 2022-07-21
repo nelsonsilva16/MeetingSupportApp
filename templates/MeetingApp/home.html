@@ -1,5 +1,18 @@
 {% extends 'MeetingApp/base.html' %}
+<div class="w3-container">
+      {% if messages %}
+        {% for message in messages %}
 
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <br>
+              <br>
+              <br>
+             <p class="w3-large">{{ message }}</p>
+              <button type="button" class="close"  aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+</div>
 {% block body %}
 	<div class="w3-container w3-padding-64">
         <h1 class="w3-bold w3-jumbo">Aplicação de Suporte de Reuniões</h1>
